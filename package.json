@@ -12,7 +12,8 @@
 		"clean": "rm -rf .nuxt dist .output",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
-		"format": "prettier . --write"
+		"format": "prettier . --write",
+		"commitmsg": "commitlint -E HUSKY_GIT_PARAMS"
 	},
 	"dependencies": {
 		"@pinia/nuxt": "^0.5.1",
@@ -39,13 +40,13 @@
 	},
 	"lint-staged": {
 		"**/*.{js,ts,vue,html}": [
-			"pnpm lint:fix",
-			"commitlint --edit $1"
+			"pnpm lint:fix"
 		]
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "lint-staged"
+			"pre-commit": "lint-staged",
+			"commit-msg": "npm run commitmsg"
 		}
 	}
 }
