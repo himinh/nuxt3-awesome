@@ -8,7 +8,7 @@
 		"generate": "nuxt generate",
 		"preview": "nuxt preview",
 		"postinstall": "nuxt prepare",
-		"prepare": "husky",
+		"prepare": "husky install",
 		"clean": "rm -rf .nuxt dist .output",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
