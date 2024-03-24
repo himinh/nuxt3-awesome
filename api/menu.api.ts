@@ -1,7 +1,7 @@
-import { Menu } from "~/types/menu";
-import { PaginateResponse } from "../types/paginate-reponse";
+import type { Menu } from "~/types/menu.type";
+import type { PaginateResponse } from "../types/paginate-reponse.type";
 import { authFetch } from "../utils/fetch";
-import { QueryParams } from "../utils/fetch/types";
+import type { QueryParams } from "../utils/fetch/types";
 
 const menuUrl = "/menus";
 export const menuApi = {

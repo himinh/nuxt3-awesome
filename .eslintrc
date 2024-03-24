@@ -1,5 +1,6 @@
 {
 	"extends": ["@nuxt", "plugin:prettier/recommended", "prettier"],
+	"root": true,
 	"env": {
 		"browser": true,
 		"node": true

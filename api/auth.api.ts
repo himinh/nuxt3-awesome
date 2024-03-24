@@ -1,6 +1,12 @@
-import { AuthUser, Login, Register, SocialLogin, Tokens } from "~/types/auth";
+import type {
+	AuthUser,
+	Login,
+	Register,
+	SocialLogin,
+	Tokens,
+} from "~/types/auth.type";
 import { authFetch, httpClient } from "~/utils/fetch";
-import { FetchOptions } from "../utils/fetch/types";
+import type { FetchOptions } from "~/utils/fetch/types";
 
 const authUrl = "/auth";
 export const authApi = {

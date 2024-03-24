@@ -1,7 +1,7 @@
-import { User } from "~/types/user";
+import type { User } from "~/types/user.type";
 import { authFetch, httpClient } from "~/utils/fetch";
-import { PaginateResponse } from "../types/paginate-reponse";
-import { FetchOptions, QueryParams } from "../utils/fetch/types";
+import type { PaginateResponse } from "../types/paginate-reponse.type";
+import type { FetchOptions, QueryParams } from "../utils/fetch/types";
 
 const userUrl = "/users";
 export const userApi = {

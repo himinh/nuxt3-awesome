@@ -1,4 +1,4 @@
-import type { User } from "~/types/user";
+import type { User } from "~/types/user.type";
 
 export const userProfileStore = defineStore("profile", () => {
 	const loading = ref<boolean>(false);

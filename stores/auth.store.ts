@@ -6,7 +6,7 @@ import type {
 	ResetPassword,
 	SocialLogin,
 	Tokens,
-} from "~/types/auth";
+} from "~/types/auth.type";
 import { localStorageManager, showErrorMessage } from "~/utils/helpers";
 
 export const useAuthStore = defineStore("auth", () => {

@@ -1,7 +1,7 @@
-import { EndpointGroup } from "~/types/endpoint-group";
-import { PaginateResponse } from "../types/paginate-reponse";
+import type { EndpointGroup } from "~/types/endpoint-group.type";
+import type { PaginateResponse } from "../types/paginate-reponse.type";
 import { httpClient } from "../utils/fetch";
-import { FetchOptions, QueryParams } from "../utils/fetch/types";
+import type { FetchOptions, QueryParams } from "../utils/fetch/types";
 
 const endpointGroupUrl = "/endpointGroups";
 export const endpointGroupService = {

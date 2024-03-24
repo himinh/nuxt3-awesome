@@ -1,7 +1,7 @@
-import { Endpoint } from "~/types/endpoint";
+import type { Endpoint } from "~/types/endpoint.type";
 import { authFetch } from "~/utils/fetch";
-import { PaginateResponse } from "../types/paginate-reponse";
-import { QueryParams } from "../utils/fetch/types";
+import type { PaginateResponse } from "../types/paginate-reponse.type";
+import type { QueryParams } from "../utils/fetch/types";
 
 const endpointUrl = "/endpoints";
 export const endpointApi = {

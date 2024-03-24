@@ -1,4 +1,4 @@
-import { AuthUser } from "~/types/auth";
+import { AuthUser } from "~/types/auth.type";
 
 export const storageKeys = {
 	token: "_app_login",

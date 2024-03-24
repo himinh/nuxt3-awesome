@@ -1,5 +1,5 @@
 import { userApi } from "~/api/user.api";
-import type { User } from "~/types/user";
+import type { User } from "~/types/user.type";
 
 export const useUserStore = defineStore("user", () => {
 	// const loading = ref<boolean>(false);

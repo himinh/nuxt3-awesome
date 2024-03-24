@@ -16,10 +16,14 @@
 		"commitmsg": "commitlint -E HUSKY_GIT_PARAMS"
 	},
 	"dependencies": {
+		"@nuxt/ui": "^2.14.2",
 		"@pinia/nuxt": "^0.5.1",
+		"date-fns": "^3.6.0",
 		"nuxt": "^3.11.1",
+		"nuxt-icon": "^0.6.10",
 		"vue": "^3.4.21",
-		"vue-router": "^4.3.0"
+		"vue-router": "^4.3.0",
+		"zod": "^3.22.4"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.2.1",
