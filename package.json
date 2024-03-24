@@ -40,13 +40,13 @@
 	},
 	"lint-staged": {
 		"**/*.{js,ts,vue,html}": [
-			"pnpm lint:fix"
+			"pnpm lint:fix",
+			"pnpm format"
 		]
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "lint-staged",
-			"commit-msg": "npm run commitmsg"
+			"pre-commit": "lint-staged && commitlint -E HUSKY_GIT_PARAMS"
 		}
 	}
 }

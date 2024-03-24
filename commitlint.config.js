@@ -1,6 +1,6 @@
 module.exports = {
-	extends: ["@commitlint/config-conventional"],
-	rules: {
+	"extends": ["@commitlint/config-conventional"],
+	"rules": {
 		"type-enum": [
 			2,
 			"always",
@@ -20,4 +20,6 @@ module.exports = {
 			],
 		],
 	},
+	"subject-full-stop": [0, "never"],
+	"subject-case": [0, "never"],
 };
