@@ -32,5 +32,4 @@ export default defineNuxtConfig({
 	pinia: {
 		autoImports: ["defineStore"],
 	},
-	eslint: {},
 });
