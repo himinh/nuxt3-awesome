@@ -1,6 +1,8 @@
 {
 	"printWidth": 80,
+	"endOfLine": "auto",
 	"tabWidth": 2,
+	"quoteProps": "consistent",
 	"useTabs": true,
 	"semi": true,
 	"singleQuote": false,
@@ -9,5 +11,5 @@
 	"arrowParens": "always",
 	"requirePragma": false,
 	"proseWrap": "always",
-	"plugins": ["prettier-plugin-organize-imports"]
+	"plugins": ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"]
 }

@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	devtools: { enabled: true },
 
@@ -13,7 +12,7 @@ export default defineNuxtConfig({
 	},
 
 	// build modules
-	modules: ["nuxt-typed-router", "@pinia/nuxt"],
+	modules: ["nuxt-typed-router", "@pinia/nuxt", "@nuxtjs/eslint-module"],
 
 	// runtime config
 	runtimeConfig: {
@@ -33,4 +32,5 @@ export default defineNuxtConfig({
 	pinia: {
 		autoImports: ["defineStore"],
 	},
+	eslint: {},
 });
