@@ -1,15 +1,15 @@
 import type { Endpoint } from "~/types/endpoint.type";
 import { authFetch } from "~/utils/fetch";
 import type { PaginateResponse } from "../types/paginate-reponse.type";
-import type { QueryParams } from "../utils/fetch/types";
+import type { PaginationParams } from "../utils/fetch/types";
 
 const endpointUrl = "/endpoints";
 export const endpointApi = {
-	getAll(query?: QueryParams): Promise<Endpoint[]> {
+	getAll(query?: PaginationParams): Promise<Endpoint[]> {
 		return authFetch.get(`${endpointUrl}`, query);
 	},
 
-	getById(id: string, query?: QueryParams): Promise<Endpoint> {
+	getById(id: string, query?: PaginationParams): Promise<Endpoint> {
 		return authFetch.get(`${endpointUrl}/${id}`, query);
 	},
 
@@ -41,7 +41,7 @@ export const endpointApi = {
 		return authFetch.get(`${endpointUrl}/me`, {});
 	},
 
-	paginate(query?: QueryParams): Promise<PaginateResponse<Endpoint>> {
+	paginate(query?: PaginationParams): Promise<PaginateResponse<Endpoint>> {
 		return authFetch.get(`${endpointUrl}/paginate`, query);
 	},
 };

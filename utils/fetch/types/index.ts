@@ -4,7 +4,7 @@ export type SearchParams = {
 
 export type MethodType = "get" | "post" | "delete" | "patch" | "put";
 
-export type QueryParams = {
+export type PaginationParams = {
 	_page?: number;
 	_limit?: number;
 	_sort?: string;
@@ -27,7 +27,7 @@ export type FetchOptions = {
 		| "unsafe-url";
 	integrity?: string;
 	baseURL?: string;
-	query?: QueryParams;
+	query?: PaginationParams;
 	method?: MethodType;
 	body?: any;
 };

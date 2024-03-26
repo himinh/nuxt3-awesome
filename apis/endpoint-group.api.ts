@@ -1,12 +1,12 @@
 import type { EndpointGroup } from "~/types/endpoint-group.type";
 import type { PaginateResponse } from "../types/paginate-reponse.type";
 import { httpClient } from "../utils/fetch";
-import type { FetchOptions, QueryParams } from "../utils/fetch/types";
+import type { FetchOptions, PaginationParams } from "../utils/fetch/types";
 
 const endpointGroupUrl = "/endpointGroups";
 export const endpointGroupService = {
 	getAll(
-		query?: QueryParams,
+		query?: PaginationParams,
 		options?: FetchOptions,
 	): Promise<EndpointGroup[]> {
 		return httpClient.get(`${endpointGroupUrl}`, query, options);
@@ -14,7 +14,7 @@ export const endpointGroupService = {
 
 	getById(
 		id: string,
-		query?: QueryParams,
+		query?: PaginationParams,
 		options?: FetchOptions,
 	): Promise<EndpointGroup> {
 		return httpClient.get(`${endpointGroupUrl}/${id}`, query, options);
@@ -53,7 +53,7 @@ export const endpointGroupService = {
 	},
 
 	paginate(
-		query?: QueryParams,
+		query?: PaginationParams,
 		options?: FetchOptions,
 	): Promise<PaginateResponse<EndpointGroup>> {
 		return httpClient.get(`${endpointGroupUrl}/paginate`, query, options);

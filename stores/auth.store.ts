@@ -1,11 +1,10 @@
-import { authApi } from "~/api/auth.api";
+import { authApi } from "~/apis/auth.api";
 import type {
 	AuthUser,
 	Login,
 	Register,
 	ResetPassword,
 	SocialLogin,
-	Tokens,
 } from "~/types/auth.type";
 import { localStorageManager, showErrorMessage } from "~/utils/helpers";
 
@@ -15,7 +14,7 @@ export const useAuthStore = defineStore("auth", () => {
 		email: "",
 	});
 
-	const authUser = ref<Tokens | null>(localStorageManager.getAuth());
+	const authUser = ref<AuthUser | null>(localStorageManager.getAuth());
 	const loading = ref<boolean>(false);
 
 	/**

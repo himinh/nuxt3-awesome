@@ -1,4 +1,4 @@
-import { formatErrorMessage } from "./formatErrorMessage";
+import { formatErrorMessage } from ".";
 
 export const showErrorMessage = (error: any) => {
 	let errorType = error.name;
@@ -8,13 +8,12 @@ export const showErrorMessage = (error: any) => {
 		errorType = error.data.type;
 		errorTitle = error.data.title;
 	}
+	const message = error.data
+		? formatErrorMessage(error.data.details, errorType)
+		: error.message;
 
-	ElNotification({
+	return {
 		title: errorTitle,
-		message: error.data
-			? formatErrorMessage(error.data.details, errorType)
-			: error.message,
-		dangerouslyUseHTMLString: true,
-		type: "error",
-	});
+		message,
+	};
 };

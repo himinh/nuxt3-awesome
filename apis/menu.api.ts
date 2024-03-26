@@ -1,15 +1,15 @@
 import type { Menu } from "~/types/menu.type";
 import type { PaginateResponse } from "../types/paginate-reponse.type";
 import { authFetch } from "../utils/fetch";
-import type { QueryParams } from "../utils/fetch/types";
+import type { PaginationParams } from "../utils/fetch/types";
 
 const menuUrl = "/menus";
 export const menuApi = {
-	getAll(query?: QueryParams): Promise<Menu[]> {
+	getAll(query?: PaginationParams): Promise<Menu[]> {
 		return authFetch.get(`${menuUrl}`, query);
 	},
 
-	getById(id: string, query?: QueryParams): Promise<Menu> {
+	getById(id: string, query?: PaginationParams): Promise<Menu> {
 		return authFetch.get(`${menuUrl}/${id}`, query);
 	},
 
@@ -37,7 +37,7 @@ export const menuApi = {
 		return authFetch.delete(`${menuUrl}/${ids.toString()}`);
 	},
 
-	paginate(query?: QueryParams): Promise<PaginateResponse<Menu>> {
+	paginate(query?: PaginationParams): Promise<PaginateResponse<Menu>> {
 		return authFetch.get(`${menuUrl}/paginate`, query);
 	},
 };

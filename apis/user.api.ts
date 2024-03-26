@@ -1,17 +1,17 @@
 import type { User } from "~/types/user.type";
 import { authFetch, httpClient } from "~/utils/fetch";
 import type { PaginateResponse } from "../types/paginate-reponse.type";
-import type { FetchOptions, QueryParams } from "../utils/fetch/types";
+import type { FetchOptions, PaginationParams } from "../utils/fetch/types";
 
 const userUrl = "/users";
 export const userApi = {
-	getAll(query?: QueryParams, options?: FetchOptions): Promise<User[]> {
+	getAll(query?: PaginationParams, options?: FetchOptions): Promise<User[]> {
 		return httpClient.get(`${userUrl}`, query, options);
 	},
 
 	getById(
 		id: string,
-		query?: QueryParams,
+		query?: PaginationParams,
 		options?: FetchOptions,
 	): Promise<User> {
 		return authFetch.get(`${userUrl}/${id}`, query, options);
@@ -46,7 +46,7 @@ export const userApi = {
 	},
 
 	paginate(
-		query?: QueryParams,
+		query?: PaginationParams,
 		options?: FetchOptions,
 	): Promise<PaginateResponse<User>> {
 		return authFetch.get(`${userUrl}/paginate`, query, options);
