@@ -1,22 +1,22 @@
-import { AccountType } from "~/utils/enums/accountType";
-import { Gender } from "~/utils/enums/gender";
-import { Role } from "~/utils/enums/role";
+import type { AccountTypeEnum } from "~/enums/account-type.enum";
+import type { GenderEnum } from "~/enums/gender.enum";
+import type { RoleEnum } from "~/enums/role.enum";
 
 export type User = {
 	email: string | null;
 	phone: string;
 	username: string;
-	accountType: AccountType;
+	accountType: AccountTypeEnum;
 
 	_id: string;
 	fullName: string | null;
-	gender: Gender | "";
+	gender: GenderEnum | "";
 	dateOfBirth: number | null;
 	avatar: string | null;
 
 	deviceID: string;
 	fcmTokens: string[];
 	enableFcm: boolean;
-	role: Role;
+	role: RoleEnum;
 	deleted: boolean;
 };

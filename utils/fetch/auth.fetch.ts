@@ -1,4 +1,4 @@
-import { HttpClient } from "./httpClient";
+import { HttpClient } from "./http.client";
 
 class AuthFetch extends HttpClient {
 	constructor() {

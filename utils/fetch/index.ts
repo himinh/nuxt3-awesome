@@ -1,2 +1,2 @@
-export * from "./authFetch";
-export * from "./httpClient";
+export * from "./auth.fetch";
+export * from "./guest.fetch";

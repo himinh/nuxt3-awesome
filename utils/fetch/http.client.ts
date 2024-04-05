@@ -1,4 +1,4 @@
-import type { FetchOptions, MethodType, QueryParams } from "./types";
+import type { FetchOptions, MethodType, PaginationParams } from "./types";
 
 export class HttpClient {
 	private readonly isAuth: boolean;
@@ -46,7 +46,7 @@ export class HttpClient {
 		Object.assign(fetchOptions, { onRequest });
 	}
 
-	get<ResT>(endpoint: string, query?: QueryParams, opts?: FetchOptions) {
+	get<ResT>(endpoint: string, query?: PaginationParams, opts?: FetchOptions) {
 		return this.request<ResT>("get", endpoint, undefined, {
 			...opts,
 			query,
@@ -69,5 +69,3 @@ export class HttpClient {
 		return this.request<ResT>("delete", endpoint, undefined, opts);
 	}
 }
-
-export const httpClient = new HttpClient(false);

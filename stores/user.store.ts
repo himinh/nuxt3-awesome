@@ -1,4 +1,4 @@
-import { userApi } from "~/api/user.api";
+import { userApi } from "~/apis/user.api";
 import type { User } from "~/types/user.type";
 
 export const useUserStore = defineStore("user", () => {

@@ -1,4 +1,6 @@
-import { endpointApi } from "~/api/endpoint.api";
+import { endpointApi } from "~/apis/endpoint.api";
+import type { Endpoint } from "~/types/endpoint.type";
+import type { PaginationParams } from "~/utils/fetch/types";
 
 export const useEndpointStore = defineStore("endpoint", () => {
 	const limit = ref<number>(10);
@@ -33,8 +35,16 @@ export const useEndpointStore = defineStore("endpoint", () => {
 		},
 	);
 
-	const create = (item: any) => {
-		data.value?.docs.unshift(item);
+	const create = (item: Endpoint) => {
+		return useAsyncData(() => endpointApi.create(item));
+	};
+
+	const getAllEndpoints = () => {
+		return useAsyncData(() => endpointApi.getAll());
+	};
+
+	const getEndpointsPaginate = (query: PaginationParams) => {
+		return useAsyncData(() => endpointApi.paginate(query), {});
 	};
 
 	return {
@@ -44,5 +54,7 @@ export const useEndpointStore = defineStore("endpoint", () => {
 		pending,
 		data,
 		create,
+		getAllEndpoints,
+		getEndpointsPaginate,
 	};
 });

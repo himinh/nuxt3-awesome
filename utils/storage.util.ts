@@ -1,11 +1,11 @@
-import { AuthUser } from "~/types/auth.type";
+import type { AuthUser } from "~/types";
 
 export const storageKeys = {
 	token: "_app_login",
 	carts: "carts",
 };
 
-export const localStorageManager = {
+export const storageUtil = {
 	getAuth(): AuthUser | null {
 		const authString = localStorage.getItem(storageKeys.token);
 

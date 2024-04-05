@@ -1,10 +1,8 @@
-export type SearchParams = {
-	[key: string]: string | number;
-};
+export type SearchParams = Record<string, string | number>;
 
 export type MethodType = "get" | "post" | "delete" | "patch" | "put";
 
-export type QueryParams = {
+export type PaginationParams = {
 	_page?: number;
 	_limit?: number;
 	_sort?: string;
@@ -27,7 +25,7 @@ export type FetchOptions = {
 		| "unsafe-url";
 	integrity?: string;
 	baseURL?: string;
-	query?: QueryParams;
+	query?: PaginationParams;
 	method?: MethodType;
 	body?: any;
 };
