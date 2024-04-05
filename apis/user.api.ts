@@ -1,54 +1,62 @@
 import type { User } from "~/types/user.type";
-import { authFetch, httpClient } from "~/utils/fetch";
+import { authFetch, guestFetch } from "~/utils/fetch";
 import type { PaginateResponse } from "../types/paginate-reponse.type";
 import type { FetchOptions, PaginationParams } from "../utils/fetch/types";
 
 const userUrl = "/users";
+
 export const userApi = {
-	getAll(query?: PaginationParams, options?: FetchOptions): Promise<User[]> {
-		return httpClient.get(`${userUrl}`, query, options);
+	getAll: (
+		query?: PaginationParams,
+		options?: FetchOptions,
+	): Promise<User[]> => {
+		return guestFetch.get(`${userUrl}`, query, options);
 	},
 
-	getById(
+	getById: (
 		id: string,
 		query?: PaginationParams,
 		options?: FetchOptions,
-	): Promise<User> {
+	): Promise<User> => {
 		return authFetch.get(`${userUrl}/${id}`, query, options);
 	},
 
-	create(body: User, options?: FetchOptions): Promise<User> {
+	create: (body: User, options?: FetchOptions): Promise<User> => {
 		return authFetch.post(`${userUrl}`, body, options);
 	},
 
-	update(id: string, body: User, options?: FetchOptions): Promise<User> {
+	updateById: (
+		id: string,
+		body: User,
+		options?: FetchOptions,
+	): Promise<User> => {
 		return authFetch.patch(`${userUrl}/${id}`, body, options);
 	},
 
-	delete(id: string): Promise<User> {
+	deleteById: (id: string): Promise<User> => {
 		return authFetch.delete(`/${`${userUrl}`}/${id}`);
 	},
 
-	updatePassword(body: { oldPassword: string; newPassword: string }) {
+	updatePassword: (body: { oldPassword: string; newPassword: string }) => {
 		return authFetch.patch(`${userUrl}/`, body);
 	},
 
-	deleteManySoftByIds(ids: string[]) {
+	deleteManySoftByIds: (ids: string[]) => {
 		return authFetch.delete(`${userUrl}/${ids.toString()}/soft_ids`);
 	},
 
-	deleteManyByIds(ids: string[]) {
+	deleteManyByIds: (ids: string[]) => {
 		return authFetch.delete(`${userUrl}/${ids.toString()}`);
 	},
 
-	getMe() {
+	getMe: (): Promise<User> => {
 		return authFetch.get(`${userUrl}/me`, {});
 	},
 
-	paginate(
+	paginate: (
 		query?: PaginationParams,
 		options?: FetchOptions,
-	): Promise<PaginateResponse<User>> {
+	): Promise<PaginateResponse<User>> => {
 		return authFetch.get(`${userUrl}/paginate`, query, options);
 	},
 };

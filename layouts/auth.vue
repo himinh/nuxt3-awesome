@@ -16,8 +16,12 @@ useHead({
 });
 </script>
 <template>
-	<div>
-		<h1>Auth Layouts</h1>
-		<slot />
+	<div class="align-center flex min-h-screen justify-center">
+		<div class="rounded-lg bg-white p-5 shadow-lg">
+			<h4 class="pb-4 text-xl text-blue-500">
+				{{ $route.meta.title || "登录" }}
+			</h4>
+			<slot />
+		</div>
 	</div>
 </template>

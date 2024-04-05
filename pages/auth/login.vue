@@ -20,6 +20,8 @@ const onSubmit = (): string => {
 };
 </script>
 
-<template><h1 @click="onSubmit">Login Page</h1></template>
+<template>
+	<form action="">Login page</form>
+</template>
 
 <style lang="css" scoped></style>

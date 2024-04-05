@@ -2,10 +2,11 @@
 	"files.eol": "\n",
 	"editor.tabSize": 2,
 	"editor.formatOnSave": true,
-	"editor.lineHeight": 32,
-	"editor.cursorWidth": 4,
+	"editor.lineHeight": 34,
+	"editor.cursorWidth": 3,
 	"editor.minimap.enabled": false,
 	"workbench.startupEditor": "none",
+	"prettier.singleQuote": true,
 	"[typescript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
@@ -15,7 +16,6 @@
 	"[vue]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-	"prettier.singleQuote": true,
 	"[scss]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
@@ -28,8 +28,12 @@
 	"[handlebars]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-
 	"[json]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	}
+	},
+	"editor.cursorBlinking": "expand",
+	"editor.cursorSmoothCaretAnimation": "on",
+	"editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
+	"editor.fontLigatures": true,
+	"editor.fontWeight": "300"
 }

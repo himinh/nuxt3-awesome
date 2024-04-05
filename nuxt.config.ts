@@ -1,9 +1,12 @@
 export default defineNuxtConfig({
 	devtools: { enabled: true },
-
+	colorMode: {
+		preference: "light",
+	},
 	// build modules
 	modules: [
 		"@nuxt/ui",
+		"nuxt-icon",
 		"nuxt-typed-router",
 		"@pinia/nuxt",
 		"@nuxtjs/eslint-module",

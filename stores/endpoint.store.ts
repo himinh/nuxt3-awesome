@@ -1,5 +1,5 @@
 import { endpointApi } from "~/apis/endpoint.api";
-import type { Endpoint } from "~/types";
+import type { Endpoint } from "~/types/endpoint.type";
 import type { PaginationParams } from "~/utils/fetch/types";
 
 export const useEndpointStore = defineStore("endpoint", () => {

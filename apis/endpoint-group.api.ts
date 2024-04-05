@@ -1,61 +1,32 @@
-import type { EndpointGroup } from "~/types/endpoint-group.type";
+import type { Endpoint } from "~/types/endpoint.type";
+import { authFetch } from "~/utils/fetch";
 import type { PaginateResponse } from "../types/paginate-reponse.type";
-import { httpClient } from "../utils/fetch";
-import type { FetchOptions, PaginationParams } from "../utils/fetch/types";
+import type { PaginationParams } from "../utils/fetch/types";
 
-const endpointGroupUrl = "/endpointGroups";
-export const endpointGroupService = {
-	getAll(
-		query?: PaginationParams,
-		options?: FetchOptions,
-	): Promise<EndpointGroup[]> {
-		return httpClient.get(`${endpointGroupUrl}`, query, options);
+const endpointGroupUrl = "/endpoint_groups";
+
+export const endpointApi = {
+	getAll: (query?: PaginationParams): Promise<Endpoint[]> => {
+		return authFetch.get(`${endpointGroupUrl}`, query);
 	},
 
-	getById(
-		id: string,
-		query?: PaginationParams,
-		options?: FetchOptions,
-	): Promise<EndpointGroup> {
-		return httpClient.get(`${endpointGroupUrl}/${id}`, query, options);
+	getById: (id: string, query?: PaginationParams): Promise<Endpoint> => {
+		return authFetch.get(`${endpointGroupUrl}/${id}`, query);
 	},
 
-	create(body: EndpointGroup, options?: FetchOptions): Promise<EndpointGroup> {
-		return httpClient.post(`${endpointGroupUrl}`, body, options);
+	create: (body: Endpoint): Promise<Endpoint> => {
+		return authFetch.post(`${endpointGroupUrl}`, body);
 	},
 
-	update(
-		id: string,
-		body: EndpointGroup,
-		options?: FetchOptions,
-	): Promise<EndpointGroup> {
-		return httpClient.patch(`${endpointGroupUrl}/${id}`, body, options);
+	updateById: (id: string, body: Endpoint): Promise<Endpoint> => {
+		return authFetch.patch(`${endpointGroupUrl}/${id}`, body);
 	},
 
-	delete(id: string): Promise<EndpointGroup> {
-		return httpClient.delete(`/${`${endpointGroupUrl}`}/${id}`);
+	deleteById: (id: string): Promise<Endpoint> => {
+		return authFetch.delete(`/${`${endpointGroupUrl}`}/${id}`);
 	},
 
-	updatePassword(body: { oldPassword: string; newPassword: string }) {
-		return httpClient.patch(`${endpointGroupUrl}/`, body);
-	},
-
-	deleteManySoftByIds(ids: string[]) {
-		return httpClient.delete(`${endpointGroupUrl}/${ids.toString()}/soft_ids`);
-	},
-
-	deleteManyByIds(ids: string[]) {
-		return httpClient.delete(`${endpointGroupUrl}/${ids.toString()}`);
-	},
-
-	getMe() {
-		return httpClient.get(`${endpointGroupUrl}/me`, {});
-	},
-
-	paginate(
-		query?: PaginationParams,
-		options?: FetchOptions,
-	): Promise<PaginateResponse<EndpointGroup>> {
-		return httpClient.get(`${endpointGroupUrl}/paginate`, query, options);
+	paginate: (query?: PaginationParams): Promise<PaginateResponse<Endpoint>> => {
+		return authFetch.get(`${endpointGroupUrl}/paginate`, query);
 	},
 };

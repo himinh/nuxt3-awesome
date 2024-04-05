@@ -6,23 +6,14 @@ import type {
 	ResetPassword,
 	SocialLogin,
 } from "~/types/auth.type";
-import { localStorageManager, showErrorMessage } from "~/utils/helpers";
+import { handleError } from "~/utils/handleError";
+import { storageUtil } from "~/utils/storage.util";
 
 export const useAuthStore = defineStore("auth", () => {
-	const forgotPassSent = reactive({
-		isSent: false,
-		email: "",
-	});
-
-	const authUser = ref<AuthUser | null>(localStorageManager.getAuth());
+	const forgotPassSent = reactive({ isSent: false, email: "" });
+	const authUser = ref<AuthUser | null>(storageUtil.getAuth());
 	const loading = ref<boolean>(false);
 
-	/**
-	 * Login
-	 *
-	 * @param inputs
-	 * @returns
-	 */
 	const login = async (inputs: Login) => {
 		const data = await _asyncHandler(() => authApi.login(inputs));
 
@@ -35,19 +26,12 @@ export const useAuthStore = defineStore("auth", () => {
 		if (data) _setAuth(data);
 	};
 
-	/**
-	 * Register
-	 *
-	 * @param inputs
-	 */
 	const register = async (inputs: Register) => {
 		const data = await _asyncHandler(() => authApi.register(inputs));
 
 		if (data) _setAuth(data.value!);
 	};
-	/**
-	 * Logout
-	 */
+
 	const logout = async () => {
 		await useAsyncData(() => authApi.logout());
 
@@ -55,23 +39,12 @@ export const useAuthStore = defineStore("auth", () => {
 		_clearAuth();
 	};
 
-	/**
-	 * Forgot pass
-	 *
-	 * @param rfToken
-	 * @returns
-	 */
 	const forgotPassword = async (email: string) => {
 		const data = await _asyncHandler(() => authApi.forgotPassword(email));
 
 		if (data) setForgotPassSent(true, data.email);
 	};
 
-	/**
-	 * Reset password
-	 *
-	 * @param inputs
-	 */
 	const resetPassword = async (inputs: ResetPassword) => {
 		const data = await _asyncHandler(() => authApi.resetPassword(inputs));
 
@@ -82,11 +55,6 @@ export const useAuthStore = defineStore("auth", () => {
 		}
 	};
 
-	/**
-	 * Get access token
-	 *
-	 * @returns
-	 */
 	const getAccessToken = async () => {
 		if (!authUser.value) return null;
 
@@ -108,12 +76,6 @@ export const useAuthStore = defineStore("auth", () => {
 		return null;
 	};
 
-	/**
-	 * Refresh auth by refreshToken
-	 *
-	 * @param rfToken
-	 * @returns
-	 */
 	const refreshAuthByRfToken = async (rfToken: string) => {
 		try {
 			const data = await authApi.refreshToken(rfToken);
@@ -122,8 +84,7 @@ export const useAuthStore = defineStore("auth", () => {
 
 			return data;
 		} catch (error) {
-			showErrorMessage(error);
-
+			handleError(error);
 			_clearAuth();
 
 			return null;
@@ -137,14 +98,14 @@ export const useAuthStore = defineStore("auth", () => {
 	 */
 	const _setAuth = (data: AuthUser) => {
 		authUser.value = { ...authUser.value, ...data };
-		localStorageManager.setAuth(authUser.value);
+		storageUtil.setAuth(authUser.value);
 	};
 
 	/**
 	 * Clear auth
 	 */
 	const _clearAuth = () => {
-		localStorageManager.clearAuth();
+		storageUtil.clearAuth();
 		authUser.value = null;
 	};
 
@@ -168,7 +129,7 @@ export const useAuthStore = defineStore("auth", () => {
 		loading.value = false;
 
 		if (error.value) {
-			showErrorMessage(error.value);
+			handleError(error.value);
 			return null;
 		}
 

@@ -5,7 +5,7 @@ export const storageKeys = {
 	carts: "carts",
 };
 
-export const localStorageManager = {
+export const storageUtil = {
 	getAuth(): AuthUser | null {
 		const authString = localStorage.getItem(storageKeys.token);
 
