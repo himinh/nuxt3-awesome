@@ -64,7 +64,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "lint-staged && commitlint -E HUSKY_GIT_PARAMS"
+			"pre-commit": "lint-staged && commitlint --from=HEAD~1 --to=HEAD"
 		}
 	}
 }
