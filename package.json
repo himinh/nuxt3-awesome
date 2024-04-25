@@ -14,7 +14,7 @@
 		"lint:prettier": "prettier . --ignore-path .eslintignore --check",
 		"lint": "pnpm lint:eslint && pnpm lint:prettier",
 		"format": "prettier --list-different . --ignore-path .eslintignore --write",
-		"lint:fix": "pnpm format && pnpm eslint . --fix"
+		"lint:fix": "pnpm format && pnpm lint:eslint . --fix"
 	},
 	"dependencies": {
 		"@pinia/nuxt": "^0.5.1",
